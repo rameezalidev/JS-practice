@@ -1,15 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Variables & Constants</title>
 </head>
+
 <body>
-    
+
 
     <script>
-        console.log("Hello World")
+
+        var name = "Rameez";
+        var age = 19;
+        var city = "Lahore";
+        var isStudent = false;
+
+        console.log(name)
+        console.log(age);
+        console.log(city);
+        console.log(isStudent);
+
+        let score = 50;
+        score = 75;
+        console.log(score)
+
+        const PI = 3.14;
+        //  PI = 34;  // Error
+        console.log(PI);
+
+
+
+        // Identifying Types -- Practice
+        let studentName = "Ali Rehman";
+        let studentAge = 21;
+        const dateOfBirth = 21;
+        const country = "Pakistan";
+
+        if (true) {
+            var a = 10;
+            let  b = 20;
+        }
+
+        console.log(a);
+        // console.log(b); 
+
+        console.log(typeof "JavaScript");
+        console.log(typeof 100);
+        console.log(typeof 99.5);
+        console.log(typeof true);
+        console.log(typeof null);
+        console.log(typeof undefined);
+        console.log(typeof 10n);
+
+        let b = null;
+        console.log(typeof null);
+
+        // Dynamic Typing
+        let value = 100;
+        console.log(value);
+        console.log(typeof value);
+
+        value = "Ali";
+        console.log(value);
+        console.log(typeof value);
+
+        value = true;
+        console.log(value);
+        console.log(typeof value);
+
+
+        value = null;
+        console.log(value);
+        console.log(typeof value);
+
+        value = {
+            name: "Ali",
+            age: 20
+        }
+        console.log(value);
+        console.log(typeof value);
+
+        let username; //undefined
+        let selectedUser = null; // intentionally left empty
+
+
+        const student = {
+            name: "Hammad",
+            age: 20
+        }
+        console.log(student.name, student.age , student.email );
+
+        function greet()
+        {
+            console.log("Hello");
+        }
+        let result = greet();
+        console.log(result);
+        console.log(typeof result);
+
+
+        // Falsy Values
+        if(false) {
+            console.log("If worked!");
+        }
+        if(0) {
+            console.log("If worked");
+        }
+        if("") {
+            console.log("If worked");
+        }
+        if(null) {
+            console.log("If worked");
+        }
+        if(NaN) {
+            console.log("If worked");
+        }
+
+        // Some Truthy Values
+        if("Hello") {
+            console.log("I am Truthy Values");
+        }
+        if("0"){
+            console.log("I am Truthy Values");
+        }
+        if([]) {
+            console.log("I am Truthy Values");
+        }
+        if({}) {
+            console.log("I am Truthy Values");
+        }
+        if(42) {
+            console.log("I am Truthy Values");
+        }
+        if(-1) {
+            console.log("I am Truthy Values");
+        }
+    
+
+        username = "";
+        if(username) {
+            console.log("Username: ",username);
+        }else {
+            console.log("User not found");
+        }
+
+        // Refernce types
+        const person1 = {
+            name: "Ali"
+        }
+        person1.name = "Rameez";
+        console.log(person1);
+        
+
+        let p1 = {
+            name: "Rameez"
+        }
+        let p2 = p1;
+        p2.name = "Ali";
+        console.log(p1.name);
+        console.log(p2.name);
+        // Same Reference ?
+
+        let arr1 = [10,20,30];
+        let arr2 = arr1;
+
+        arr2.push(40);
+        console.log(arr1);
+        console.log(arr2)
+
+
+        // Challenge?
+        let a1 = 0;
+        let b1 = "Hello";
+        let c = null;
+        let d;
+        let e = [];
+
+        console.log(typeof a1)
+        console.log(typeof b1)
+        console.log(typeof c)
+        console.log(typeof d)
+        console.log(typeof e)
+
+        console.log(Boolean(a1))
+        console.log(Boolean(b1))
+        console.log(Boolean(c))
+        console.log(Boolean(d))
+        console.log(Boolean(e))
+        
+
+        // Debugging Code given
+        const age1 = 20;
+        // age1 = 21;
+
+        let name1;
+        console.log(typeof name1);
+
+        if(name1) {
+            console.log("Name Exisit");
+        }
+
+        
+
     </script>
 </body>
-</html>
+
+</html> 
