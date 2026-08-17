@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nullish & Optional</title>
+</head>
+
+<body>
+    <h1>Nullish Coalescing & Optional chaining</h1>
+
+    <script>
+        const foo = null ?? "default values";
+        console.log(foo)
+
+        // const a = 0 ?? 42;
+        // console.log(a)
+
+        //    const res= null || undefined ?? "foo"
+
+        console.log((null || undefined) ?? "foo")
+
+
+        const nullValue = null;
+        const emptyString = "";
+        const someNumber = 42;
+
+        const valA = nullValue ?? "Default A";
+        const valB = emptyString ?? "Default B";
+        const valC = someNumber ?? "Default C";
+        console.log(valA); // default a
+        console.log(valB); // ""
+        console.log(valC); // somenumber
+
+
+        const count = 0;
+        const text = "";
+
+        const qty = count || 42; // 42
+        const message = text || "Hi !"; // Hi
+        console.log(qty);
+        console.log(message)
+
+
+        function a() {
+            console.log("a was called");
+            return undefined;
+        }
+        function b() {
+            console.log("b was called");
+            return false;
+        }
+        function c() {
+            console.log("c was called");
+            return "foo";
+        }
+
+        // console.log(a() ?? c()); // undefined ?? "foo"
+
+        // console.log(b() ?? c()); // false ?? "foo"
+
+
+        console.log(a() || c());
+        console.log(b() || c());
+
+
+
+        const foo1 = { someFooProp: "hi" };
+
+        console.log(foo1.someFooProp?.toUpperCase() ?? "not available"); // "HI"
+        console.log(foo1.someBarProp?.toUpperCase() ?? "not available"); // "not available"
+
+
+
+        const adventurer = {
+            name: "Alice",
+            cat: {
+                name: "Dinah",
+            },
+        };
+
+        const dogName = adventurer?.dog?.name;
+        console.log(dogName);
+
+        console.log(adventurer?.someNonExistentMethod?.());
+
+
+    </script>
+</body>
+
+</html>
