@@ -126,6 +126,7 @@
                 i--;
             }
         }
+
         console.log(data)
 
         // Two sum
@@ -134,10 +135,62 @@
         for (let i = 0; i < array.length - 1; i++) {
             for (let j = i + 1; j < array.length; j++) {
                 if (array[i] + array[j] === target) {
-                    console.log(array[i]+ " + "+ array[j] + " = ", target)
+                    console.log(array[i] + " + " + array[j] + " = ", target)
                 }
             }
         }
+
+
+        let arr1 = [1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1]
+        let count = 0;
+        let maxOne = -Infinity;
+        let start, end;
+        let l;
+        for (let i = 0; i < arr1.length; i++) {
+            if (arr1[i] === 1) {
+                if (count == 0) {
+                    l = i;
+                    console.log("i: ", i)
+                }
+                count++;
+            } else {
+                if (maxOne < count) {
+                    start = l;
+                    maxOne = count;
+                    end = i - 1;
+                }
+                count = 0;
+            }
+        }
+        console.log(start, end, maxOne);
+
+
+
+        /// Third Maximum
+        let m = sm = tm = data[0];
+
+        for (let i = 0; i < data.length; i++) {
+            if (data[i] > m) {
+                tm = sm;
+                sm = m;
+                m = data[i]
+            } else if (sm < data[i] && data[i] !== m) {
+                sm = data[i];
+            } else if (tm < data[i] && data[i] !== sm && data[i] !== m) {
+                tm = data[i]
+            }
+        }
+        console.log(m, sm, tm)
+
+        for (let f = 0; f <= 3; f++) {
+            for (let g = 0; g <= f; g++) {
+                console.log("*")
+            }
+            console.log("\n")
+        }
+
+        
+        
     </script>
 </body>
 
