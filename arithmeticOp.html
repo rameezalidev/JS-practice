@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // Task 1
+        let productPrice = 2500;
+        let quantity = 3;
+        let discountPercent = 10;
+        let deliveryCharges = 200;
+        let freeDeliveryLimit = 5000;
+
+        let subTotal = productPrice * quantity;
+        console.log("SubTotal: ",subTotal)
+
+        let discountedAmount = subTotal - (subTotal * (discountPercent/100));
+        console.log(discountedAmount);
+
+        console.log(discountedAmount <= freeDeliveryLimit ? "Qualified for Free Delivery" : "Not Qualified for free Delivery");
+
+        let finalAmount = discountedAmount <= freeDeliveryLimit ? discountedAmount : discountPercent + deliveryCharges;
+        console.log(finalAmount);
+
+        quantity++; // Add product
+        quantity--; // Remove 1 product
+
+        console.log(quantity % 2 === 0 ? "Even" : "Odd")
+        console.log("Square of final Quantity: ", quantity**2);
+        console.log("===========Total Bill===============");
+        console.log("Product Price: ", productPrice);
+        console.log("Quantity: ", quantity);
+        console.log("Final Bill: ", finalAmount);
+        console.log("====================================");
+
+
+        // Task 2
+        let studentName = "Ali";
+        let marks = 78;
+        let attendance = 85;
+        let cgpa = 3.6;
+        let hasFeeDue = false;
+        let hsaDisciplinaryIssue = false;
+
+        // Student Passed or not
+        if(marks >= 50 && attendance >= 75 && !hasFeeDue) {
+            console.log("Student is passed !!");
+        }
+
+        // Scholarship
+        if(cgpa >= 3.5 && attendance >= 80 && !hsaDisciplinaryIssue) {
+            console.log("Student is eligible for scholarship !!");
+        }
+
+
+        // User profile handler
+        // const user = {
+        //     name: "Ali",
+        //     email: "ali@example.com",
+        //     profile: {
+        //         address: {
+        //             city: "Lahore"
+        //         }
+        //     }
+        // }
+
+
+        const user = {
+            name: "Ali",
+            email: "Ali@example.com"
+        }
+        console.log("Name", user?.name ?? "Name not Available")
+        console.log("email", user?.email ?? "Email not Available")
+        console.log("city", user?.profile?.address?.city ?? "City Not Available") 
+
+
+        user.name = "";
+        user.email = "";
+
+        // console.log(user.name ?? "No username")
+        // console.log(user.email ?? "No email");
+
+
+
+        console.log(user.name || "No username")
+        console.log(user.email || "No email");
+    </script>
+</body>
+</html>
