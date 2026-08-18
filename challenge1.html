@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Challenge: The Mysterious Transaction</title>
+</head>
+
+<body>
+    <h1>LeetCode Challenge: The Mysterious Transaction</h1>
+
+    <script>
+        var accountStatus = "active";
+        let balance = 8500;
+        const transactionAmount = 3200;
+
+        let transactionType = "withdraw";
+        let isVerified = true;
+
+        let dailyLimit = 5000;
+        let currency = "USD";
+
+        let securityCode = null;
+        let accountHolder = undefined;
+
+
+        const firstCheck = accountHolder ?? "REJECTED";
+        if (firstCheck == "REJECTED") {
+            console.log("UNKNOWN USER");
+        } else {
+            if (accountStatus?.toLowerCase() !== "active") {
+                console.log("REJECTED");
+            } else {
+                // Step 1
+                const check1 = transactionAmount ?? "REJECTED";
+                if (check1 !== "REJECTED") {
+                    const check2 = typeof transactionAmount == 'number' && transactionAmount > 0 ? "ACCEPT" : "REJECTED";
+
+                    if (check2 !== "REJECTED") {
+                        // Step 2
+                        let check3;
+                        switch (transactionType) {
+                            case "deposit":
+                                check3 = transactionType;
+                                break;
+                            case "withdraw":
+                                check3 = transactionType;
+                                break;
+                            case "transfer":
+                                check3 = transactionType;
+                                break;
+                            default:
+                                check3 = "REJECTED";
+                        }
+
+                        if (check3 !== "REJECTED") {
+                            // Step 3
+
+                            if (check3 == "deposit") {
+                                const amountCheck = typeof transactionAmount == 'number' && currency == "USD";
+                                if (amountCheck) {
+                                    console.log("APPROVED");
+                                } else {
+                                    console.log("REVIEWED");
+                                }
+                            }
+
+                            else if (check3 == "withdraw") {
+                                if (transactionAmount <= balance && transactionAmount <= dailyLimit && isVerified) {
+                                    console.log("APPROVED!");
+                                } else if (transactionAmount > balance) {
+                                    console.log("REJECTED");
+                                } else if (!isVerified) {
+                                    console.log("REVIEWED");
+                                }
+                            }
+                            else {
+                                const checkRules = isVerified && transactionAmount <= dailyLimit && securityCode;
+                                if (checkRules) {
+                                    console.log("APPROVED");
+                                } else {
+                                    console.log("REVIEWED");
+
+                                }
+                            }
+
+
+
+                        } else {
+                            console.log("REJECTED");
+                        }
+                    } else {
+                        console.log("REJECTED");
+                    }
+                } else {
+                    console.log("REJECTED");
+                }
+            }
+
+
+            console.log("Account Holder: ", accountHolder);
+            console.log("Transaction Type: ", transactionType);
+            console.log("Transaction Amount: ", transactionAmount);
+        }
+
+
+    </script>
+</body>
+
+</html>

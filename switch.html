@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch</title>
+</head>
+
+<body>
+    <h1>Switch Statment</h1>
+
+
+    <script>
+        let day = -5;
+
+        switch (day) {
+            case 1:
+                console.log("Monday");
+                break;
+            case 2:
+                console.log("Tuesday");
+                break;
+            case 3:
+                console.log("Wedenesday");
+                break;
+            case 4:
+                console.log("Thursday");
+                break;
+            case 5:
+                console.log("Friday");
+                break;
+            case 6:
+                console.log("Saturday");
+                break;
+            case 7:
+                console.log("Sunday");
+                break;
+            default:
+                console.log("Invalid Number");
+        }
+
+
+        let cat = "food";
+        let item = "burger";
+        switch (cat) {
+            case "food":
+                switch (item) {
+                    case "burger":
+                        console.log("Burger: ", 1000);
+                        break;
+                    case "sandwich":
+                        console.log("Sandwich: ", 850);
+                        break;
+                    default:
+                        console.log("Not Available");
+                }
+                break;
+            case "drinks":
+                switch (item) {
+                    case "colddrink":
+                        console.log("cold Drink: ", 1000);
+                        break;
+                    case "juice":
+                        console.log("Juice: ", 850);
+                        break;
+                    default:
+                        console.log("Not Available");
+                }
+        }
+    </script>
+</body>
+
+</html>

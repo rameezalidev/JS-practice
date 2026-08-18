@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread n Rest</title>
+</head>
+
+<body>
+    <h1>Spread And Rest</h1>
+
+    <script>
+        // copy
+        let fruits = ["apple", "banana", "mango"];
+        let newFruits = [...fruits]
+        console.log(newFruits)
+        newFruits[0] = "kiwi";
+        console.log(fruits)
+
+
+        //  merge arrays
+        let frontend = ["HTML", "CSS", "JavaScript"];
+        let backend = ["Node.js", "Express"];
+
+        const fullStack = [...frontend, ...backend];
+        console.log(fullStack)
+
+        // add while copy
+        let numbers = [10, 20, 30];
+        let anotherList = [...numbers, 40, 50];
+        console.log(anotherList);
+
+
+        let user = {
+            name: "Rameez",
+            age: 20
+        };
+        let anotherUser = { ...user, city: "Lahore" };
+        console.log(anotherUser)
+
+
+        // Rest Operator
+        function sum(...number) {
+            let sum = 0;
+            for (let i of number) {
+                sum += i;
+            }
+            return sum;
+        }
+
+
+        console.log(sum(1, 2, 4, 4, 5))
+        console.log(sum(1, 2, 4))
+
+        // Task 6
+
+        function showNumbers(first, ...remaining) {
+            console.log("First: ", first);
+            console.log("Remaining: ", remaining);
+
+        }
+
+        showNumbers(1, 2, 3, 4, 5, 5, 6)
+
+
+        // Task 7
+
+        function max(...list) {
+            let m = list[0];
+            for (let i of list) {
+                if (m < i) {
+                    m = i;
+                }
+            }
+            return m;
+        }
+
+        console.log(max(-1, 20, -4, 5, 5, 3, 5, 2))
+
+
+        // Task 8
+
+        function introduce(name, ...skills) {
+            console.log("Name: ", name);
+            console.log("Skills: ", skills);
+        }
+        introduce("Rameez", "JavaScript", "React", "Node.js");
+
+
+        /// Task 9
+        let num = [10, 20, 30, 40];
+        function calculate(a, b, c, d) {
+            console.log("Got: ", a, b, c, d);
+        }
+
+        calculate(...num);
+
+        // Task 10
+        let numbers1 = [10, 20];
+        let numbers2 = [30, 40, 50];
+
+
+        let combinedList = [...numbers1, ...numbers2];
+        console.log("Sum: ", sum(...combinedList));
+
+
+        // Task 11
+        let cart1 = ["Laptop", "Mouse"];
+        let cart2 = ["Keyboard", "Headphones"];
+
+        let cart = [...cart1, ...cart2];
+        function printList(cart) {
+            console.log("You Bought: ", cart)
+        }
+
+        printList(cart);
+
+        // Remove first item
+
+
+        function removeFirst(first, ...remaining) {
+            return remaining;
+        }
+
+        console.log(removeFirst("Apple", "Banana", "Mango", "Orange"));
+
+
+
+        // Final Challenge
+        let transactions = [500, -200, 1000, -300, 700];
+        function analyzeTransactions(list) {
+            let history = {
+                total: 0,
+                deposits: [],
+                withdrawals: []
+            };
+            let sum = 0;
+            for (let i of list) {
+                if (i < 0) {
+                    history["deposits"] = [...history.deposits, i]
+                } else {
+                    history["withdrawals"] = [...history.withdrawals, i]
+                }
+                sum += i;
+            }
+
+            history["total"] = sum;
+
+            return history;
+        }
+
+        console.log(analyzeTransactions(transactions));
+
+
+
+    </script>
+</body>
+
+</html>
