@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #timer {
+            border: 1px solid rgb(207, 203, 203);
+            width: 45%;
+            margin: 30px auto;
+            padding: 50px;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bolder;
+            
+        }
+        .container {
+            width: 50%;
+            text-align: center;
+            border: 1px dotted rgb(207, 203, 203);
+            padding: 50px;
+        }
+
+        .btn {
+            padding: 20px;
+            border: none;
+            color: white;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+
+        .btn:nth-child(1) {
+            background-color: green;
+        }
+
+        .btn:nth-child(2) {
+            background-color: red;
+        }
+
+        .btn:nth-child(3) {
+            background-color: rgb(151, 151, 3);
+        }
+        .danger {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="timer">0</div>
+        <div class="controls">
+            <button class="btn">Start</button>
+            <button class="btn">Stop</button>
+            <button class="btn">Reset</button>
+        </div>
+
+    </div>
+    <script>
+        const screen = document.querySelector("#timer");
+        const controls = document.querySelector(".controls");
+        let count = 0;
+        let timer = null;
+
+        // setTimeout(()=>{
+        //     alert("Want to give Review ?");
+        // },2000)
+        function startTimer() {
+            if(screen.classList.contains("danger")) {
+                screen.classList.remove("danger");
+            }
+            timer = setInterval(() => {
+                screen.innerText = ++count;
+            }, 1000)
+        }
+
+        function stopTimer() {
+            screen.classList.add("danger");
+            clearInterval(timer);
+        }
+
+        controls.addEventListener("click", (e) => {
+            console.log(e.target.tagName)
+            if (e.target.tagName === "BUTTON") {
+                if (e.target.innerText == "Start") {
+                    startTimer();
+                } else if (e.target.innerText == "Stop") {
+                    stopTimer()
+                    timer = null;
+                } else if (e.target.innerText == "Reset") {
+                    clearInterval(timer);
+                    timer = null;
+                    count = 0;
+                    screen.innerText = count
+                }
+
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>
