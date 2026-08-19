@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope</title>
+</head>
+
+<body>
+    <h1>Scope & Closures</h1>
+
+
+    <script>
+        let name = "Rameez";
+
+        function check() {
+            name = "Ali";
+            console.log(name);
+
+        }
+
+
+        check();
+        console.log(name);
+
+
+        // let x = 10;
+
+        // function test() {
+        //     let y = 20;
+
+        //     console.log(x);
+        //     console.log(y);
+        // }
+
+        // test();
+
+
+        // let x = "global";
+
+        function outer() {
+            let x = "outer";
+
+            function inner() {
+                // let x = "inner";
+
+                console.log(x);
+            }
+
+            inner();
+        }
+
+        outer();
+
+
+
+        let value = 10;
+
+        function test() {
+            let value = 20;
+
+            if (true) {
+                let value = 30;
+                console.log(value);
+            }
+
+            console.log(value);
+        }
+
+        test();
+
+        console.log(value);
+
+
+
+        let x = "global";
+
+        function outer() {
+            let x = "outer";
+
+            function inner() {
+                console.log(x);
+            }
+
+            inner();
+        }
+
+        outer();
+
+
+
+
+        let message = "Global";
+
+        function first() {
+            let message = "First";
+
+            function second() {
+                console.log(message);
+            }
+
+            return second;
+        }
+
+        function third() {
+            let message = "Third";
+
+            let fn = first();
+
+            fn();
+        }
+
+        third();
+
+
+        function createCounter() {
+            let count = 0;
+
+            return function () {
+                return ++count;
+            }
+        }
+
+        let counter = createCounter();
+
+        console.log(counter());
+        console.log(counter());
+        console.log(counter());
+        console.log(counter());
+
+
+        function createCounter() {
+            let count = 0;
+
+            return function () {
+                count++;
+                return count;
+            };
+        }
+
+        let counter1 = createCounter();
+        let counter2 = createCounter();
+
+        console.log(counter1());
+        console.log(counter1());
+
+        console.log(counter2());
+
+        console.log(counter1());
+        console.log(counter2());
+
+
+
+        // Attempt checkerr
+
+        function createLoginTracker() {
+            let attempt = 0;
+            function login() {
+                attempt++;
+            }
+            function getAttempts() {
+                return attempt;
+            }
+
+
+            return {
+                login, getAttempts
+            }
+        }
+
+        const tracker = createLoginTracker();
+
+        tracker.login();
+        tracker.login();
+        tracker.login();
+        tracker.login();
+
+        console.log("Tracker Attempts: ",tracker.getAttempts());
+
+
+        tracker.attempt = 100;
+
+        console.log(tracker.getAttempts());
+
+
+
+        function createMulitplier(number)
+        {
+            return function (value) {
+                return value * number;
+            }
+        }
+
+
+        const double = createMulitplier(2);
+        const triple = createMulitplier(3);
+
+        console.log(double(5))
+        console.log(triple(4))
+
+
+
+        function once(fn){
+            let hasRun = false;
+
+            return function() {
+                if(!hasRun) {
+                    fn();
+                    hasRun = true;
+                }
+            }
+        }
+
+        let func = once(()=>console.log("Initilize App"))
+        func();
+        func();
+        func();
+        func();
+        func();
+    </script>
+</body>
+
+</html>

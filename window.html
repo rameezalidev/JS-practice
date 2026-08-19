@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <h1>Window Object</h1>
+
+    <button onclick="redirect()">Go to Google</button>
+
+
+    <button onclick="goBack()">Go back</button>
+    <button onclick="goForward()">Go Forward</button>
+    <button onclick="del()">Delete Account</button>
+
+    <script>
+
+
+        window.innerHeight = 1080;
+        window.innerWidth = 1920;
+
+        console.log(window.innerHeight)
+        console.log(window.innerWidth)
+
+        // Information
+
+        console.log("current URL: ", location.href);
+        console.log("Current Page Path: ",location.pathname);
+    
+        function redirect() {
+            console.log("I am called")
+            location.href = "https://www.google.com/"
+        }
+
+
+        function goBack() {
+            history.back();
+        }
+
+        function goForward() {
+            history.forward();
+        }
+
+        function del() {
+            window.confirm("Are you sure")
+        }
+
+
+    </script>
+</body>
+</html>

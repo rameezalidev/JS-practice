@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+
+<body>
+
+
+    <script>
+        const user = {
+            name: "Rameez",
+            age: 21,
+            greet: function () {
+                console.log("Hello, ", this.name);
+            }
+        }
+        console.log(user);
+        console.log(typeof user);
+
+        console.log(user.name);
+        console.log(user["name"]);
+        user.city = "Lahore"
+        console.log(user)
+        // Object.freeze(user);
+        user.country = "Pakistan";
+        console.log(user);   // not updated bcz of freeze
+
+
+        const sym = Symbol("id1");
+        user[sym] = 234;
+        console.log(user);
+        user.greet()
+
+        delete user.greet;
+        console.log(user)
+
+
+
+        let student = {
+            name: "Ali",
+            age: 22,
+
+            address: {
+                city: "Lahore",
+                country: "Pakistan"
+            }
+        };
+
+        console.log(student.address?.city)
+
+
+        // Destructuring
+        const { name, age } = user;
+
+        console.log(name);
+        console.log(age);
+
+
+        student = {
+            name: "Ali",
+
+            address: {
+                city: "Lahore",
+                country: "Pakistan"
+            }
+        };
+
+        console.log(student);
+        const {name:std, address:{city: c , country: cn}} = student;
+
+        console.log(std, c,cn);
+
+
+        
+    </script>
+</body>
+
+</html>

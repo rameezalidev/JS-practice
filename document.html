@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h1>DOcument Object</h1>
+    <div class="box">hello</div>
+    <div class="box">hi</div>
+    <div class="box">no</div>
+    <div class="box">yes</div>
+
+
+    <script>
+    //    Array.from(document.getElementsByClassName('box')).map(el=>{
+    //         console.log(el)
+    //     })
+
+
+        document.querySelectorAll('.box').forEach(el=>{
+            console.log(el)
+        })
+    </script>
+</body>
+</html>
