@@ -5,64 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-
-    <style>
-        :root {
-            --primarycolor: rgba(128, 128, 128, 0.297);
-            --danger: rgb(154, 0, 0);
-            --safe: green;
-            --fontcolor: rgb(77, 70, 70);
-        }
-        *{
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        body{
-            height: 100vh;
-            width: 100vw;
-            color: var(--fontcolor);
-            border: 1px solid red;
-        }
-        .calculator-container{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            padding: 20px;
-            background-color: #f2f2f21f;
-        }
-        .calculator-container #screen input {
-            width: 100%;
-            height: 85px;
-            margin-bottom: 2%;
-        }
-        
-        .calculator-container .btn {
-            padding: 10px;
-            margin: 4px;
-            width: 50px;
-            border: none;
-            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.129);
-        }
-
-        .calculator-container .btn:active{
-            box-shadow: none;
-        }
-        .warn {
-            background-color: var(--danger);
-            color: white;
-        }
-        .good {
-            background-color: var(--safe);
-            color: white;
-        }
-        #equal {
-            position: absolute;
-            right: 5%;
-            height: 23%;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -72,18 +15,11 @@
         </div>
         <div class="buttons">
             <div class="button-row">
-                <button class="btn warn">x</button>
-                <button class="btn">&lpar;</button>
-                <button class="btn">&rpar;</button>
-                <button class="btn">C</button>
-                <button class="btn">n</button>
-            </div>
-            <div class="button-row">
                 <button class="btn">7</button>
                 <button class="btn">8</button>
                 <button class="btn">9</button>
-                <button class="btn">&divide;</button>
-                <button class="btn">&Sqrt;</button>
+                <button class="btn warn">⌫</button>
+                <button class="btn special">C</button>
             </div>
 
             <div class="button-row">
@@ -99,35 +35,22 @@
                 <button class="btn">2</button>
                 <button class="btn">3</button>
                 <button class="btn">-</button>
-                <button class="btn good" id="equal">=</button>
+                <button class="btn">+</button>
+
             </div>
 
             <div class="button-row">
                 <button class="btn">0</button>
                 <button class="btn">.</button>
-                <button class="btn">%</button>
-                <button class="btn">+</button>
+                <button class="btn">/</button>
+                <button class="btn special" id="equal">=</button>
             </div>
+
         </div>
     </div>
 
 
-    <script>
-        const btnContainer = document.querySelector(".buttons");
-        const screen = document.querySelector("#screen input");
-
-        btnContainer.addEventListener("click",(e)=>{
-            if(e.target.classList.contains('buttons') || e.target.classList.contains('button-row')) return;
-            if(e.target.innerText === "=") {
-                screen.value = eval(screen.value);
-            }
-            if(e.target.innerText === "C") {
-                screen.value = "";
-                return;
-            }
-            screen.value += e.target.innerText;
-        })
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
