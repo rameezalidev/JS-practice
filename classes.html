@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding OOPs</title>
+</head>
+
+<body>
+
+
+    <script>
+        class MyStack {
+            constructor() {
+                console.log("Constructor Called!");
+                this.array = []
+                this.size = 0
+                this.top = -1
+            }
+
+            push(num) {
+                this.array.push(num);
+                this.size++;
+                this.top++;
+            }
+
+            pop() {
+                if (this.size == 0) return;
+                this.size--;
+                let res = this.array[this.top];
+                this.top--;
+                return res;
+            }
+
+            print() {
+                for (let i = 0; i < this.size; i++) {
+                    console.log(this.array[i]);
+                }
+            }
+        }
+
+
+        const stack = new MyStack();
+        stack.push(10);
+        stack.push(20);
+
+        stack.print();
+        stack.pop();
+        stack.print();
+
+
+        // LinkedList
+        class Node {
+            constructor(data) {
+                this.data = data;
+                this.next = null;
+            }
+        }
+
+        class LinkedList {
+            constructor() {
+                this.head = null
+            }
+
+            insertAtEnd(num) {
+                if (this.head === null) {
+                    this.head= new Node(num);
+                    return;
+                }
+                let temp = this.head;
+                while (temp.next != null) {
+                    temp = temp.next;
+                }
+                temp.next = new Node(num);
+            }
+
+
+            
+            printList() {
+                let temp = this.head;
+                let str = ""
+                while(temp != null) {
+                    str+=temp.data + " -> ";
+                    temp = temp.next;
+                }
+                console.log(str)
+            }
+        }
+
+
+        list = new LinkedList();
+        list.insertAtEnd(10);
+        list.insertAtEnd(20);
+        list.insertAtEnd(30);
+        list.insertAtEnd(40);
+        list.insertAtEnd(50);
+        list.printList()
+    </script>
+</body>
+
+</html>

@@ -11,6 +11,9 @@
 
 
     <script>
+        debugger;
+        
+        "use strict"
         const person = {
             name: "Ali"
         };
@@ -69,8 +72,15 @@
 
         Dog.prototype = Object.create(Animal.prototype);
 
-        
+        Dog.prototype.constructor = Dog;
 
+        Dog.prototype.bark = function() {
+            console.log(this.name + " is barking")
+        }
+
+        const dog1 = new Dog("Bull", true);
+        dog1.eat();
+        dog1.bark();
     </script>
 </body>
 
