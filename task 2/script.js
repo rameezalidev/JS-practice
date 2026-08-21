@@ -48,8 +48,9 @@ document.addEventListener("keydown", (e) => {
         removeOneCharacter();
         return;
     }
+    console.log(key)
 
-    if (key === "Escape" || key === "Delete") {
+    if (key === "Escape" || key === "Delete" || key === "c") {
         clearScreen();
         return;
     }
