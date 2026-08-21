@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoization</title>
+</head>
+<body>
+    
+
+    <script>
+        let seen = {};
+        function calculate(a,b) {
+            if(seen[a+":"+b] === undefined) {
+                console.log("Calculating result....")
+                let res = a + b;
+                seen[a+":"+b] = res;
+                return res;
+            }else {
+                console.log("you have done this already !");
+                return seen[a+":"+b];
+            }
+        }
+
+
+        calculate(1,2)
+        calculate(1,2)
+        calculate(1,2)
+        calculate(1,2)
+        calculate(1,2)
+        calculate(1,2)
+        calculate(1,2)
+    </script>
+</body>
+</html>

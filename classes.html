@@ -96,6 +96,42 @@
         list.insertAtEnd(40);
         list.insertAtEnd(50);
         list.printList()
+
+
+
+
+        // Inheritance
+        class Person {
+            constructor(name,age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            printDetails() {
+                console.log("=====================================")
+                console.log("              Details                 ")
+                console.log("=====================================")
+                console.log(this.name);
+                console.log(this.age);
+            }
+        }
+        
+        class Employee extends Person{
+            constructor(name,age,empId, empSalary) {
+                super(name,age);
+                this.empId = empId;
+                this.empSalary  = empSalary;
+            }
+            
+            printDetails() {
+                super.printDetails();
+                console.log("Employee Id: ",this.empId);
+                console.log("Employee Salary: ",this.empSalary);
+                console.log("=====================================")
+            }
+        }
+        const p = new Employee("Rameez",21,101,1000)
+        p.printDetails()
     </script>
 </body>
 
