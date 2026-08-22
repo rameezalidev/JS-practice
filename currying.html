@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Currying</h1>
+
+
+    <script>
+        function add(a) {
+            return function(b) {
+                return a+b;
+            }
+        }
+
+        console.log(add(10)(20))
+        console.log(add(10)) // print function
+
+
+
+
+
+        // practical use case
+
+        function graceMarks(num){
+
+            return function(stdMarks) {
+                return stdMarks+num;
+            }
+        }
+
+        let decisionTaken = graceMarks(30);
+        console.log(decisionTaken(20))
+    </script>
+</body>
+</html>
