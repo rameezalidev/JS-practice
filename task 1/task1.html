@@ -3,23 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task 1</title>
+    <title>Expression Evaluator</title>
 </head>
 <body>
-    
+
+    <h1>Expression & Function Logic Practice</h1>
+
     <script>
 
-        function convertToJsExpression(rawExpression)
-        {
-            if(rawExpression.includes("^")) {
-                rawExpression = rawExpression.replaceAll("^", "**");
-            }else if(rawExpression.includes("")) {
-                
-            }
-
+        function convertToJsExpression(rawExpression) {
+            rawExpression = rawExpression.replaceAll("^", "**");
+            rawExpression = rawExpression.replaceAll("sqrt", "Math.sqrt");
+            rawExpression = rawExpression.replaceAll("sin", "Math.sin");
+            rawExpression = rawExpression.replaceAll("cos", "Math.cos");
+            return rawExpression;
         }
 
-        convertToJsExpression("2^3")
+
+        function evaluateExpression(rawExpression) {
+            let jsExpression = convertToJsExpression(rawExpression);
+            let result = eval(jsExpression);
+            return result;
+        }
+
+
+        console.log("2^3 =", evaluateExpression("2^3"));
+        console.log("sqrt(16) =", evaluateExpression("sqrt(16)"));
+        console.log("sin(Math.PI / 2) =", evaluateExpression("sin(Math.PI / 2)"));
+        console.log("cos(0) =", evaluateExpression("cos(0)"));
+
+        console.log(
+            "2^3 + sqrt(16) =",
+            evaluateExpression("2^3 + sqrt(16)")
+        );
+
     </script>
+
 </body>
 </html>
