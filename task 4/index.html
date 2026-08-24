@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable Calculator</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 30px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .item {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Variable Calculator</h1>
+
+    <input id="name" placeholder="Variable name">
+    <input id="value" type="number" placeholder="Value">
+    <button onclick="addVariable()">Add Variable</button>
+
+    <div id="list"></div>
+
+    <hr>
+
+    <input id="expression" placeholder="Example: a + b * 2">
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="result"></div>
+
+    <script>
+        let variables = {};
+
+        function addVariable() {
+            let name = document.getElementById("name").value;
+            let value = document.getElementById("value").value;
+
+            if (name == "" || value == "") {
+                return;
+            }
+
+            variables[name] = Number(value);
+
+            document.getElementById("name").value = "";
+            document.getElementById("value").value = "";
+
+            showVariables();
+        }
+
+        function showVariables() {
+            let list = document.getElementById("list");
+            list.innerHTML = "";
+
+            for (let name in variables) {
+                list.innerHTML += `
+                    <div class="item">
+                        ${name} = ${variables[name]}
+                        <button onclick="updateVariable('${name}')">Update</button>
+                        <button onclick="deleteVariable('${name}')">Delete</button>
+                    </div>
+                `;
+            }
+        }
+
+        function updateVariable(name) {
+            let value = prompt("Enter new value", variables[name]);
+
+            if (value != null && value != "") {
+                variables[name] = Number(value);
+                showVariables();
+            }
+        }
+
+        function deleteVariable(name) {
+            delete variables[name];
+            showVariables();
+        }
+
+        function calculate() {
+            let expression = document.getElementById("expression").value;
+
+            for (let name in variables) {
+                expression = expression.replaceAll(name, variables[name]);
+            }
+
+            try {
+                let answer = eval(expression);
+                document.getElementById("result").innerHTML = "Result: " + answer;
+            } catch {
+                document.getElementById("result").innerHTML = "Invalid expression";
+            }
+        }
+    </script>
+
+</body>
+</html>

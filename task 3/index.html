@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            font-family: Arial;
+        }
+        h1 {
+            background-color: green;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 60px;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .note {
+            background: white;
+            padding: 12px;
+            margin-top: 10px;
+            width: 350px;
+        }
+
+        .note button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Notes</h1>
+
+    <input type="text" id="noteInput" placeholder="Enter your note">
+    <button id="btn-to-add">Add</button>
+
+    <div id="notes"></div>
+
+    <script>
+
+        document.addEventListener("keydown",(e)=>{
+            if(e.key === "Enter") {
+                addNote();
+            }
+        })
+
+        let notes = JSON.parse(localStorage.getItem("notes")) || [];
+        const addBtn = document.querySelector("#btn-to-add");
+        addBtn.addEventListener("click",addNote);
+
+        showNotes();
+
+        function addNote() {
+            let input = document.getElementById("noteInput");
+
+            if (input.value == "") {
+                return;
+            }
+
+            notes.push(input.value);
+            localStorage.setItem("notes", JSON.stringify(notes));
+
+            input.value = "";
+            showNotes();
+        }
+
+        function showNotes() {
+            let box = document.getElementById("notes");
+            box.innerHTML = "";
+
+            notes.forEach(function(note, index) {
+                box.innerHTML += `
+                    <div class="note">
+                        ${note}
+                        <button onclick="editNote(${index})">Edit</button>
+                        <button onclick="deleteNote(${index})">Delete</button>
+                    </div>
+                `;
+            });
+        }
+
+        function deleteNote(index) {
+            notes.splice(index, 1);
+            localStorage.setItem("notes", JSON.stringify(notes));
+            showNotes();
+        }
+
+        function editNote(index) {
+            let newNote = prompt("Edit note", notes[index]);
+
+            if (newNote != null && newNote != "") {
+                notes[index] = newNote;
+                localStorage.setItem("notes", JSON.stringify(notes));
+                showNotes();
+            }
+        }
+    </script>
+
+</body>
+</html>

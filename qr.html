@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code Generator</title>
+
+    <!-- QR Code library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+
+<body>
+
+    <input type="text" id="text" placeholder="Enter text">
+
+    <button onclick="generateQR()">Generate QR</button>
+
+    <div id="qrcode"></div>
+
+    <script>
+        function generateQR() {
+
+            let text = document.getElementById("text").value;
+
+            // Remove previous QR code
+            document.getElementById("qrcode").innerHTML = "";
+
+            // Generate QR
+            new QRCode(document.getElementById("qrcode"), text);
+        }
+    </script>
+
+</body>
+</html>

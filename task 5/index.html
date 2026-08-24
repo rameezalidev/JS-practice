@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="marks">
+    <button id="btn">Check Grade</button>
+    <div id="result"></div>
+
+    <script>
+        document.querySelector("#btn").addEventListener("click", () => {
+            evaluateMarks();
+        })
+
+        function evaluateMarks() {
+            try {
+                let marks = Number(document.getElementById("marks").value);
+
+                if (isNaN(marks)) {
+                    throw new Error("Please enter a valid number.");
+                }
+
+                if (marks < 0 || marks > 100) {
+                    throw new Error("Marks must be between 0 and 100.");
+                }
+
+                let grade;
+
+                if (marks >= 90) {
+                    grade = "A Grade";
+                } else if (marks >= 80) {
+                    grade = "B Grade";
+                } else if (marks >= 70) {
+                    grade = "C Grade";
+                } else if (marks >= 60) {
+                    grade = "D Grade";
+                } else {
+                    grade = "Fail";
+                }
+
+                document.getElementById("result").innerHTML =
+                    `Your Result: ${grade}`;
+
+            } catch (error) {
+                document.getElementById("result").innerHTML =
+                    `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+
+</html>
